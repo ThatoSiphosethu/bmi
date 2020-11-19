@@ -57,47 +57,47 @@ $("button").click(bmiCalculator);
        
        function bmiCalculator() {
 
-           var
-
            var weight = $("#weight").val();
            weight = parseFloat(weight);
 
            var height = $("#height").val();
            height = parseFloat(height);
 
-           var BMI = (weight / height) * 703;
+           var BMI = (weight / (height **2) * 703).toFixed(2);
 
-           if ( range > 0.60)
+           var results;
+
+           if ( BMI > 0.60)
            {
                results = "You are extremely underweight"
            }
 
-           else if ( range > 0.64)
+           else if ( BMI > 0.64)
            {
                results  = "You are severely underweight"
            }
 
-           else if ( range > 0.74)
+           else if ( BMI > 0.74)
            {
                results = "You are underweight"
            }
 
-           else if ( range > 1.0)
+           else if ( BMI > 1.0)
            {
                results = "You are healthy"
            }
 
-           else if ( range > 1.2)
+           else if ( BMI > 1.2)
            {
                results = "You are overweight"
            }
 
-           else if ( range > 1.4)
+           else if ( BMI > 1.4)
            {
                results = "You are moderately overweight"
            }
 
-           else if (range > 1.6)
+           else if ( BMI > 1.6)
            {
                results = "You are severely overweight"
            }
@@ -106,6 +106,8 @@ $("button").click(bmiCalculator);
            {
                results = "You are extremely overweight"
            }
+
+           $("#output").text(BMI + " " + results)
        }
 
 
@@ -114,5 +116,6 @@ $("button").click(bmiCalculator);
            rules: myRules,
            messages: messages
        })
+
     },
 );
